@@ -57,18 +57,18 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Cloudonut | Vendor Login</title>
+        <title>Login</title>
       </Head>
       <div className='min-h-screen flex items-start justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-md w-full space-y-8'>
           <div>
-            <img
+            {/* <img
               className='mx-auto h-48 w-auto'
-              src='https://cd-image-assets.s3.us-east-2.amazonaws.com/cloudnut.png'
-              alt='Cloudonut'
-            />
+              src=''    <-- Logo here 
+              alt=''
+            /> */}
             <h2 className='mt-6 text-center text-2xl font-extrabold text-gray-900'>
-              <span className='text-yellow-500'>Cloudonut</span> For Restaurants
+              <span className='text-yellow-500'>光環密宗</span> 大圓滿一日禪
             </h2>
           </div>
           <form className='mt-8 space-y-6' action='#' method='POST'>
@@ -124,6 +124,14 @@ const Login = () => {
                 </label>
               </div>
 
+              <div className='text-sm'>
+                <a
+                  href='/register'
+                  className='font-medium text-yellow-600 hover:text-yellow-500'
+                >
+                  Register
+                </a>
+              </div>
               <div className='text-sm'>
                 <a
                   href='#'
