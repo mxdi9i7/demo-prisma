@@ -2,7 +2,6 @@ import { useState } from '@hookstate/core';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-import Example from '../components/Example';
 
 const Home: React.FC = () => {
   return (
@@ -10,7 +9,6 @@ const Home: React.FC = () => {
       <Head>
         <title>Landing page</title>
       </Head>
-      <Example />
     </div>
   );
 };
