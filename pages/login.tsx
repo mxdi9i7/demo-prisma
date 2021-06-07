@@ -7,20 +7,36 @@ import { useRouter } from 'next/router';
 import { MouseEvent } from 'react';
 import { Persistence } from '@hookstate/persistence';
 
-const Login = () => {
-  const form = useState({ username: '', password: '' });
-  const authToken = useState(globalAuthToken);
+async function signIn(user: {
+  username: string;
+  user_password: string;
+  email: string;
+}) {
+  const response = await fetch('api/login', {
+    method: 'POST',
+    body: JSON.stringify(user),
+  });
+  const result = await response.json();
+  if (!result.success) {
+    throw new Error(result.data);
+  }
+  return await result;
+}
 
+const Login = () => {
+  const authToken = useState(globalAuthToken);
+  const form = useState({ username: '', password: '' });
   const notification = useState(globalNotifications);
   const router = useRouter();
   const handleSignin = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    AuthService.signin({
+    signIn({
       username: form.username.value,
-      password: form.password.value,
+      user_password: form.password.value,
+      email: form.username.value,
     })
       .then((response) => {
-        if (response.data) {
+        if (response) {
           authToken.attach(Persistence('state.authToken'));
           globalAuthToken.set(response.data);
           router.push('/');
